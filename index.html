@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MedVault</title>
+
+<style>
+body{
+  margin:0;
+  padding:20px;
+  background:#111827;
+  color:white;
+  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+h1{
+  text-align:center;
+}
+
+.subject{
+  display:block;
+  background:#1f2937;
+  color:white;
+  text-decoration:none;
+  padding:16px;
+  border-radius:12px;
+  margin-bottom:10px;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:none;
+  margin-bottom:15px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>MedVault</h1>
+
+<input
+id="search"
+placeholder="Search subject..."
+onkeyup="searchSubjects()">
+
+<a class="subject" href="#">Anatomy</a>
+<a class="subject" href="#">Physiology</a>
+<a class="subject" href="#">Biochemistry</a>
+<a class="subject" href="#">Pathology</a>
+<a class="subject" href="#">Pharmacology</a>
+<a class="subject" href="#">Microbiology</a>
+<a class="subject" href="#">FMT</a>
+<a class="subject" href="#">PSM</a>
+<a class="subject" href="#">Medicine</a>
+<a class="subject" href="#">Surgery</a>
+<a class="subject" href="#">OBG</a>
+<a class="subject" href="#">Pediatrics</a>
+<a class="subject" href="#">ENT</a>
+<a class="subject" href="#">Ophthalmology</a>
+<a class="subject" href="#">Orthopedics</a>
+<a class="subject" href="#">Dermatology</a>
+<a class="subject" href="#">Psychiatry</a>
+<a class="subject" href="#">Radiology</a>
+<a class="subject" href="#">Anesthesia</a>
+
+<script>
+function searchSubjects() {
+  let input = document.getElementById("search").value.toLowerCase();
+  let subjects = document.getElementsByClassName("subject");
+
+  for(let i=0;i<subjects.length;i++){
+    let text = subjects[i].innerText.toLowerCase();
+    subjects[i].style.display =
+      text.includes(input) ? "block" : "none";
+  }
+}
+</script>
+
+</body>
+</html>
