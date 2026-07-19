@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FMGE-Vault</title>
+<title>FMGE Vault</title>
 
 <style>
 body{
@@ -14,70 +14,103 @@ body{
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
-h1{
+h1,h2{
   text-align:center;
 }
 
-.subject{
-  display:block;
-  background:#1f2937;
-  color:white;
-  text-decoration:none;
-  padding:16px;
-  border-radius:12px;
-  margin-bottom:10px;
+.page{
+  display:none;
 }
 
-input{
-  width:100%;
-  padding:12px;
+.active{
+  display:block;
+}
+
+.card{
+  background:#1f2937;
+  padding:16px;
+  margin-bottom:10px;
   border-radius:12px;
+  cursor:pointer;
+}
+
+button{
+  width:100%;
+  padding:15px;
   border:none;
-  margin-bottom:15px;
+  border-radius:12px;
+  margin-top:10px;
+  font-size:16px;
+}
+
+.back{
+  margin-top:20px;
 }
 </style>
 </head>
 
 <body>
 
-<h1>FMGE-Vault</h1>
+<div id="home" class="page active">
 
-<input
-id="search"
-placeholder="Search subject..."
-onkeyup="searchSubjects()">
+<h1>FMGE Vault</h1>
 
-<a class="subject" href="#">Anatomy</a>
-<a class="subject" href="#">Physiology</a>
-<a class="subject" href="#">Biochemistry</a>
-<a class="subject" href="#">Pathology</a>
-<a class="subject" href="#">Pharmacology</a>
-<a class="subject" href="#">Microbiology</a>
-<a class="subject" href="#">FMT</a>
-<a class="subject" href="#">PSM</a>
-<a class="subject" href="#">Medicine</a>
-<a class="subject" href="#">Surgery</a>
-<a class="subject" href="#">OBG</a>
-<a class="subject" href="#">Pediatrics</a>
-<a class="subject" href="#">ENT</a>
-<a class="subject" href="#">Ophthalmology</a>
-<a class="subject" href="#">Orthopedics</a>
-<a class="subject" href="#">Dermatology</a>
-<a class="subject" href="#">Psychiatry</a>
-<a class="subject" href="#">Radiology</a>
-<a class="subject" href="#">Anesthesia</a>
+<div class="card" onclick="openSubject('Anatomy')">Anatomy</div>
+<div class="card" onclick="openSubject('Physiology')">Physiology</div>
+<div class="card" onclick="openSubject('Biochemistry')">Biochemistry</div>
+<div class="card" onclick="openSubject('Pathology')">Pathology</div>
+<div class="card" onclick="openSubject('Pharmacology')">Pharmacology</div>
+<div class="card" onclick="openSubject('Microbiology')">Microbiology</div>
+<div class="card" onclick="openSubject('FMT')">FMT</div>
+<div class="card" onclick="openSubject('PSM')">PSM</div>
+<div class="card" onclick="openSubject('Medicine')">Medicine</div>
+<div class="card" onclick="openSubject('Surgery')">Surgery</div>
+<div class="card" onclick="openSubject('OBG')">OBG</div>
+<div class="card" onclick="openSubject('Pediatrics')">Pediatrics</div>
+<div class="card" onclick="openSubject('ENT')">ENT</div>
+<div class="card" onclick="openSubject('Ophthalmology')">Ophthalmology</div>
+<div class="card" onclick="openSubject('Orthopedics')">Orthopedics</div>
+<div class="card" onclick="openSubject('Dermatology')">Dermatology</div>
+<div class="card" onclick="openSubject('Psychiatry')">Psychiatry</div>
+<div class="card" onclick="openSubject('Radiology')">Radiology</div>
+<div class="card" onclick="openSubject('Anesthesia')">Anesthesia</div>
+
+</div>
+
+<div id="subjectPage" class="page">
+
+<h2 id="subjectTitle"></h2>
+
+<div class="card">📺 Full Lectures</div>
+
+<div class="card">⚡ Rapid Revision</div>
+
+<div class="card">📖 Notes</div>
+
+<button class="back" onclick="goHome()">⬅ Back</button>
+
+</div>
 
 <script>
-function searchSubjects() {
-  let input = document.getElementById("search").value.toLowerCase();
-  let subjects = document.getElementsByClassName("subject");
 
-  for(let i=0;i<subjects.length;i++){
-    let text = subjects[i].innerText.toLowerCase();
-    subjects[i].style.display =
-      text.includes(input) ? "block" : "none";
-  }
+function openSubject(subject){
+
+document.getElementById('home').classList.remove('active');
+
+document.getElementById('subjectPage').classList.add('active');
+
+document.getElementById('subjectTitle').innerText = subject;
+
 }
+
+function goHome(){
+
+document.getElementById('subjectPage').classList.remove('active');
+
+document.getElementById('home').classList.add('active');
+
+}
+
 </script>
 
 </body>
